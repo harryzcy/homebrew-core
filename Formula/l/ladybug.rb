@@ -1,8 +1,8 @@
 class Ladybug < Formula
   desc "Embedded graph database built for query speed and scalability"
   homepage "https://ladybugdb.com/"
-  url "https://github.com/LadybugDB/ladybug/archive/refs/tags/v0.14.3.tar.gz"
-  sha256 "9fcae7c52640ea11dd58c1424552dcd34bdb835e10b1c812fdd361a7a1b30377"
+  url "https://github.com/LadybugDB/ladybug/archive/refs/tags/v0.15.0.tar.gz"
+  sha256 "f297634b8bc981f36f11b43b041f867e8d91a48e0a21a42f7f3cc41fe3e35623"
   license "MIT"
 
   bottle do
@@ -17,8 +17,21 @@ class Ladybug < Formula
   depends_on "cmake" => :build
   uses_from_macos "python" => :build
 
+  on_linux do
+    depends_on "gcc" if DevelopmentTools.gcc_version < 13
+  end
+
+  fails_with :gcc do
+    version "12"
+    cause "Requires C++20 std::format, https://gcc.gnu.org/gcc-13/changes.html#libstdcxx"
+  end
+
   def install
-    system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    args = %W[
+      -DCMAKE_INSTALL_RPATH=#{rpath}
+    ]
+
+    system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
     system "cmake", "--build", "build"
     bin.install "build/tools/shell/lbug"
   end
