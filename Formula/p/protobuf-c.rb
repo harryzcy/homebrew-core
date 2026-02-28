@@ -4,7 +4,7 @@ class ProtobufC < Formula
   url "https://github.com/protobuf-c/protobuf-c/releases/download/v1.5.2/protobuf-c-1.5.2.tar.gz"
   sha256 "e2c86271873a79c92b58fef7ebf8de1aa0df4738347a8bd5d4e65a80a16d0d24"
   license "BSD-2-Clause"
-  revision 10
+  revision 11
 
   bottle do
     sha256 cellar: :any, arm64_tahoe:   "cf90b00eb0059e3c986ac5019c55cbea1022f3dbae573d1788a1df86f1c878d9"
@@ -26,7 +26,7 @@ class ProtobufC < Formula
 
   depends_on "pkgconf" => :build
   depends_on "abseil"
-  depends_on "protobuf"
+  depends_on "protobuf@33" # https://github.com/protobuf-c/protobuf-c/issues/795
 
   def install
     system "autoreconf", "--force", "--install", "--verbose" if build.head?
@@ -46,7 +46,7 @@ class ProtobufC < Formula
       }
     PROTO
     (testpath/"test.proto").write testdata
-    system Formula["protobuf"].opt_bin/"protoc", "test.proto", "--c_out=."
+    system Formula["protobuf@33"].opt_bin/"protoc", "test.proto", "--c_out=."
 
     testpath.glob("test.pb-c.*").map(&:unlink)
     system bin/"protoc-c", "test.proto", "--c_out=."
