@@ -6,7 +6,7 @@ class Openvino < Formula
   url "https://github.com/openvinotoolkit/openvino/archive/refs/tags/2025.4.1.tar.gz"
   sha256 "9926c8a8188d0baa9730623efaeb9f0bccf7059f5e4e957a8d238c3226c2b19b"
   license "Apache-2.0"
-  revision 3
+  revision 4
   head "https://github.com/openvinotoolkit/openvino.git", branch: "master"
 
   livecheck do
@@ -26,13 +26,12 @@ class Openvino < Formula
   depends_on "cmake" => [:build, :test]
   depends_on "flatbuffers" => :build
   depends_on "pkgconf" => [:build, :test]
-  depends_on "pybind11" => :build
   depends_on "python@3.14" => [:build, :test]
   depends_on "abseil"
   depends_on "nlohmann-json"
   depends_on "numpy"
   depends_on "onnx"
-  depends_on "protobuf"
+  depends_on "protobuf@33"
   depends_on "pugixml"
   depends_on "snappy"
   depends_on "tbb"
@@ -62,6 +61,16 @@ class Openvino < Formula
       url "https://github.com/ARM-software/kleidiai/archive/eaf63a6ae9a903fb4fa8a4d004a974995011f444.tar.gz"
       sha256 "756fa3040ff23f78a4c3f4c1984a3814d78d302b0b5dc3f0b255322368aefc58"
     end
+  end
+
+  # FIXME: depends_on "pybind11" => :build
+  #
+  # error: static assertion failed due to requirement '0 == detail::constexpr_sum(
+  # detail::is_instantiation<pybind11::call_guard, pybind11::is_method>::value, ...)':
+  # def_property family does not currently support call_guard. Use a py::cpp_function instead
+  resource "pybind11" do
+    url "https://github.com/pybind/pybind11/archive/refs/tags/v3.0.1.tar.gz"
+    sha256 "741633da746b7c738bb71f1854f957b9da660bcd2dce68d71949037f0969d0ca"
   end
 
   # FIXME: depends_on "xbyak" => :build
@@ -137,6 +146,7 @@ class Openvino < Formula
     resource("mlas").stage buildpath/"src/plugins/intel_cpu/thirdparty/mlas"
     resource("onednn_cpu").stage buildpath/"src/plugins/intel_cpu/thirdparty/onednn"
     resource("onednn_gpu").stage buildpath/"src/plugins/intel_gpu/thirdparty/onednn_gpu" if OS.linux?
+    resource("pybind11").stage buildpath/"src/bindings/python/thirdparty/pybind11"
 
     if Hardware::CPU.arm?
       resource("arm_compute").stage buildpath/"src/plugins/intel_cpu/thirdparty/ComputeLibrary"
@@ -171,8 +181,11 @@ class Openvino < Formula
       ENV["MACOSX_DEPLOYMENT_TARGET"] = "#{MacOS.version}.0"
     end
 
-    # Fix linking failure of certain binaries.
-    cmake_args << "-DCMAKE_BUILD_RPATH=#{HOMEBREW_PREFIX}/lib" if OS.linux? && Hardware::CPU.arm?
+    # Fix linking failure of certain binaries as Scons disables superenv
+    if OS.linux? && Hardware::CPU.arm?
+      cmake_args << "-DCMAKE_BUILD_RPATH=#{HOMEBREW_PREFIX}/lib"
+      cmake_args << "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-rpath,#{Formula["protobuf@33"].opt_lib}"
+    end
 
     openvino_binary_dir = "#{buildpath}/build"
     system "cmake", "-S", ".", "-B", openvino_binary_dir, *cmake_args, *std_cmake_args
