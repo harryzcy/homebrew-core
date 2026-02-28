@@ -5,6 +5,7 @@ class Grpc < Formula
       tag:      "v1.78.1",
       revision: "5b6492ea90b2b867a6adad1b10a6edda28e860d1"
   license "Apache-2.0"
+  revision 1
   compatibility_version 1
   head "https://github.com/grpc/grpc.git", branch: "master"
 
@@ -33,7 +34,7 @@ class Grpc < Formula
   depends_on "abseil"
   depends_on "c-ares"
   depends_on "openssl@3"
-  depends_on "protobuf"
+  depends_on "protobuf@33" # https://github.com/grpc/grpc/issues/41755
   depends_on "re2"
 
   on_macos do
@@ -104,6 +105,7 @@ class Grpc < Formula
     CPP
 
     ENV.prepend_path "PKG_CONFIG_PATH", Formula["openssl@3"].opt_lib/"pkgconfig"
+    ENV.prepend_path "PKG_CONFIG_PATH", Formula["protobuf@33"].opt_lib/"pkgconfig"
     ENV.prepend_path "PKG_CONFIG_PATH", Formula["zlib-ng-compat"].opt_lib/"pkgconfig" if OS.linux?
     flags = shell_output("pkgconf --cflags --libs libcares protobuf re2 grpc++").chomp.split
     system ENV.cc, "test.cpp", "-L#{Formula["abseil"].opt_lib}", *flags, "-o", "test"
