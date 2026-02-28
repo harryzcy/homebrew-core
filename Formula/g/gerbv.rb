@@ -1,10 +1,9 @@
 class Gerbv < Formula
   desc "Gerber (RS-274X) viewer"
   homepage "https://gerbv.github.io/"
-  url "https://github.com/gerbv/gerbv/archive/refs/tags/v2.10.0.tar.gz"
-  sha256 "3eef8eb8a2755da8400e7a4394229475ad4cf1a2f85345720ee1da135a1aec44"
+  url "https://github.com/gerbv/gerbv/archive/refs/tags/v2.11.0.tar.gz"
+  sha256 "907ee7764e2d048b09ddcd8291bdb48d7b407056d558f5bf7164a09b6e68895f"
   license "GPL-2.0-or-later"
-  revision 1
 
   bottle do
     sha256 arm64_tahoe:    "16ddd7d1212886648901aef5bd32548cda6180e8ea9ac2bd0092733453b20947"
@@ -19,10 +18,8 @@ class Gerbv < Formula
     sha256 x86_64_linux:   "581743d09f59d3e816c5f7f903e26d82eb53065b0cbbed29685f94967c96a641"
   end
 
-  depends_on "autoconf" => :build
-  depends_on "automake" => :build
+  depends_on "cmake" => :build
   depends_on "gettext" => :build
-  depends_on "libtool" => :build
   depends_on "pkgconf" => [:build, :test]
 
   depends_on "cairo"
@@ -37,21 +34,18 @@ class Gerbv < Formula
     depends_on "pango"
   end
 
-  def install
-    ENV.append "CPPFLAGS", "-DQUARTZ" if OS.mac?
-    inreplace "autogen.sh", "libtool", "glibtool"
+  # Backport CMake fixes, upstream pr ref, https://github.com/gerbv/gerbv/pull/303
+  patch do
+    url "https://github.com/chenrui333/gerbv/commit/13e73c2767f0170cd4ff660ba0ccceac7c080573.patch?full_index=1"
+    sha256 "d1e8adc4371cfa3b2cc033b06c26daf2aa219cdd8d7a58b3fadfbdc0cbf9f920"
+  end
 
-    # Disable commit reference in include dir
-    inreplace "utils/git-version-gen.sh" do |s|
-      s.gsub! 'RELEASE_COMMIT=`"${GIT}" rev-parse HEAD`', "RELEASE_COMMIT=\"\""
-      s.gsub! "${PREFIX}~", "${PREFIX}"
-    end
-    system "./autogen.sh"
-    system "./configure", "--disable-update-desktop-database",
-                          "--disable-schemas-compile",
-                          *std_configure_args
-    system "make"
-    system "make", "install"
+  def install
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    # Ensure generated gettext sources exist before parallel translation build.
+    system "cmake", "--build", "build", "--target", "generated"
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
 
   test do
@@ -68,7 +62,7 @@ class Gerbv < Formula
     C
 
     flags = shell_output("pkgconf --cflags --libs libgerbv").chomp.split
-    system ENV.cc, "test.c", "-o", "test", *flags
+    system ENV.cc, "test.c", "-o", "test", *flags, "-Wl,-rpath,#{lib}"
     system "./test"
   end
 end
