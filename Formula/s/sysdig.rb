@@ -8,7 +8,7 @@ class Sysdig < Formula
     { any_of: ["GPL-2.0-only", "MIT"] },                  # `falcosecurity-libs`, driver/
     { "GPL-2.0-only" => { with: "Linux-syscall-note" } }, # `falcosecurity-libs`, userspace/libscap/compat/
   ]
-  revision 1
+  revision 2
   head "https://github.com/draios/sysdig.git", branch: "dev"
 
   livecheck do
@@ -46,7 +46,7 @@ class Sysdig < Formula
     depends_on "curl"
     depends_on "elfutils"
     depends_on "grpc"
-    depends_on "protobuf"
+    depends_on "protobuf@33"
     depends_on "zlib-ng-compat" # for `falcosecurity-libs`
   end
 
