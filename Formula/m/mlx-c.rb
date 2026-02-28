@@ -4,6 +4,7 @@ class MlxC < Formula
   url "https://github.com/ml-explore/mlx-c/archive/refs/tags/v0.5.0.tar.gz"
   sha256 "dcfc404d7004e6da70170c669dbc920913cb25a59c9f7dac781caf92e524cc86"
   license "MIT"
+  revision 1
 
   bottle do
     sha256 cellar: :any, arm64_tahoe:   "9c01f1a7b9ad2b7ce2a6017c29b6468ba076b5bd86c71ad857d622fad3b967d0"
@@ -16,8 +17,24 @@ class MlxC < Formula
   depends_on :macos
   depends_on "mlx"
 
+  on_macos do
+    depends_on "llvm" => :build if DevelopmentTools.clang_build_version <= 1500
+  end
+
+  fails_with :clang do
+    build 1500
+    cause "Requires C++20 support"
+  end
+
+  # fix build with mlx 0.31.0 API changes, upstream pr ref, https://github.com/ml-explore/mlx-c/pull/103
+  patch do
+    url "https://github.com/chenrui333/mlx-c/commit/1a51ff8cd618e1967f71fc37cba7044fcf3e746f.patch?full_index=1"
+    sha256 "2256935dce8e552bd8f143ec279bb0d11fb802eeb23ac868e4d28c506ab72a8a"
+  end
+
   def install
     args = %w[
+      -DCMAKE_CXX_STANDARD=20
       -DBUILD_SHARED_LIBS=ON
       -DMLX_C_BUILD_EXAMPLES=OFF
       -DMLX_C_USE_SYSTEM_MLX=ON
