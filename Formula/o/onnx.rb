@@ -4,7 +4,7 @@ class Onnx < Formula
   url "https://github.com/onnx/onnx/archive/refs/tags/v1.20.1.tar.gz"
   sha256 "9bcd6473c689b1ac3aeba8df572891756e01c1a151ae788df5cbc7a4499e5db5"
   license "Apache-2.0"
-  revision 2
+  revision 3
 
   bottle do
     sha256 cellar: :any,                 arm64_tahoe:   "bbf1df574852d99a3f963757bb9a40cb323efc459a63b071fba3412bc2541135"
@@ -17,7 +17,7 @@ class Onnx < Formula
 
   depends_on "cmake" => [:build, :test]
   depends_on "abseil"
-  depends_on "protobuf"
+  depends_on "protobuf@33"
 
   uses_from_macos "python" => :build
 
@@ -110,6 +110,7 @@ class Onnx < Formula
     CMAKE
 
     ENV.delete "CPATH"
+    ENV.append_path "CMAKE_PREFIX_PATH", Formula["protobuf@33"].opt_prefix
     args = ["-DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON"]
     args << "-DCMAKE_BUILD_RPATH=#{lib};#{HOMEBREW_PREFIX}/lib" if OS.linux?
     system "cmake", "-S", ".", "-B", "build", *args
