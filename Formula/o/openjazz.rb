@@ -7,12 +7,12 @@ class Openjazz < Formula
   head "https://github.com/AlisterT/openjazz.git", branch: "master"
 
   bottle do
-    sha256 arm64_tahoe:   "92e19619a1da8b5c0e505c3cf23b2f568b4e73b91e5ec8216a0dec9f9c964f65"
-    sha256 arm64_sequoia: "726bfea73e75f930ea74aed371bea7d8b37af13a27a22d2a6cae7f4680128451"
-    sha256 arm64_sonoma:  "255d0d962a17c73707c7a915e392d29869e9e3922292082763cd7f2a2accdc7d"
-    sha256 sonoma:        "bdebeaabc57bc79b387ac5a5a17d6c185a7f5b34655aa85497961fb9cc89e36e"
-    sha256 arm64_linux:   "8292638d63fec35e0d046abbbf5c8b13bb413e2ff719b1f9e63053f512fda4e6"
-    sha256 x86_64_linux:  "bf10bef174a78b2ee05f8ca4f65b80504ed93763fe33c010d0950fb3d7dac6e6"
+    sha256 arm64_tahoe:   "6bfc89162e63bb17558bc08624c060105ff815e076fbb396d145b5e635ca2ea6"
+    sha256 arm64_sequoia: "74de474ee4ceb88b075a6c6a512e3248a25c74f6009002f89dd0b156812be670"
+    sha256 arm64_sonoma:  "6dd6527671c8191ea8b206a3808f10108cd56c3ce4e4cae4ecb6f3ad79304164"
+    sha256 sonoma:        "12c74f58ca66e40d408c048acf972ce3ab9da5dabfc49ecfa3ea490e46e98ef3"
+    sha256 arm64_linux:   "07bf3d6746df890feac5085f6172c230e4f00b316730068de499795786ff2aeb"
+    sha256 x86_64_linux:  "f616f9102db1c8e95a380643842bee98afda25af124666c3b4734437070d47c6"
   end
 
   depends_on "cmake" => :build
