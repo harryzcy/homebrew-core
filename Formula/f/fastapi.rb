@@ -3,8 +3,8 @@ class Fastapi < Formula
 
   desc "CLI for FastAPI framework"
   homepage "https://fastapi.tiangolo.com/"
-  url "https://files.pythonhosted.org/packages/96/15/647ea81cb73b55b48fb095158a9cd64e42e9e4f1d34dbb5cc4a4939779d6/fastapi-0.134.0.tar.gz"
-  sha256 "3122b1ea0dbeaab48b5976e80b99ca7eda02be154bf03e126a33220e73255a9a"
+  url "https://files.pythonhosted.org/packages/a2/b5/386a9579a299a32365b34097e4eac6a0544ce0d7aa4bb95ce0d71607a999/fastapi-0.135.0.tar.gz"
+  sha256 "bd37903acf014d1284bda027096e460814dca9699f9dacfe11c275749d949f4d"
   license "MIT"
 
   bottle do
