@@ -18,7 +18,7 @@ class Ladybug < Formula
   uses_from_macos "python" => :build
 
   on_linux do
-    depends_on "gcc" if DevelopmentTools.gcc_version < 13
+    depends_on "gcc"
   end
 
   fails_with :gcc do
