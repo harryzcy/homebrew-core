@@ -5,6 +5,10 @@ class Skills < Formula
   sha256 "fea8ad6c568912be00fd55d454dc7b0898daa3ee1e2744527e01b42a9c6cafe6"
   license "MIT"
 
+  bottle do
+    sha256 cellar: :any_skip_relocation, all: "7b403a326f65ce947ef879e21e8ed446ccdeeb50536f740c3003feb499be3642"
+  end
+
   depends_on "node"
 
   def install
