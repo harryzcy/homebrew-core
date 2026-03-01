@@ -7,12 +7,12 @@ class DomainCheck < Formula
   head "https://github.com/saidutt46/domain-check.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "5f2ef536af26f51bc0a144befc8058b9f7d0010b94497531f6dd7dfefc11a128"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6fd74f3abf89f82e24e671a906c03feb140f565fe430a05dd59a687cac90ed55"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "793d840397bbee32d66818418645ba4a8425a82bc5e2818e149bef60d6f32ebb"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c394f09e96652a567bf543c73895cc014e5da239efbe657c378415d09634745e"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "db65a4f14522aa1eab93d6425e37e6e095dc2d283890b8a89d1e91a6e0277f9d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "62fca6dc8ada99cd3b73af944ab931f6481b3dde94f6be361a44380637bf8716"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "baa57da46e98cee7cac9fff1944d5f16beefc63267bccc27c5c51599ce6d5861"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f1097965f722375546abae1361ae60c567c5f5b61f437d980636ba67380ebc13"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e568040d40c84351f80f450b3321a319e977f756bf3b9dc6ad22463a65e8da84"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b49fe47fdb1883d283f7abe4ef185d29837516ee37a3beeccbe095140c85d1fa"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "887c4c2c3c6d25f7a19a498e40842cbaa012d66f3a8db4802ce8ee3781ff75e1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9dd17ff2ae4b8ca49781d53383c50805ebcfd6fbadced7b3edfeca7ae5f12f38"
   end
 
   depends_on "rust" => :build
