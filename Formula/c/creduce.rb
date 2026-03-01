@@ -67,14 +67,13 @@ class Creduce < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "ef5fc676679f474e69748993a5a795c53eb1eabea3ac94e8901002cfb43475df"
-    sha256 cellar: :any,                 arm64_sequoia: "752bcd060b5ab5d04efc96dfd67d9128e6fd66a2d9b14b5e59735ba758d2d61b"
-    sha256 cellar: :any,                 arm64_sonoma:  "c489f889cd95d689d226e4965582120a96b1119eb4fb2902c481c6b9338122aa"
-    sha256 cellar: :any,                 arm64_ventura: "56cd23ed4e8cdf7a2928f740332b07eed6f3d5b8a22416cf30ab746fbecbe0a7"
-    sha256 cellar: :any,                 sonoma:        "487aebd04b8609040875fb262122692867f20507b7c71e25a8914a920521242d"
-    sha256 cellar: :any,                 ventura:       "937ef76ad140358b5458b394b8376746972ce80915e3fa91fc7b6065a94bc5ef"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "7355a04a779fd118356fba1c777127451b6ef219c6d89797db1b379b5eebb977"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "299566ba27c179eb7e3aa48dfc766b6b3bfe6a4892a929b5777aede0b4e54a05"
+    rebuild 1
+    sha256 cellar: :any,                 arm64_tahoe:   "94b893aac362ceca74c7d09acf19335865abf17e3f638db16167adf56865cd5e"
+    sha256 cellar: :any,                 arm64_sequoia: "5fadf5c8c719a221bb924142eae5abffe40dff151033a6166e5e02b2a61980f8"
+    sha256 cellar: :any,                 arm64_sonoma:  "70f95a86f0cada743b96616b58e8a55c6747c831af695947d02dc1a07132cd8b"
+    sha256 cellar: :any,                 sonoma:        "49319eb927f3b1f423b4176c525f89c4e3e55da53441c63ee4812cc3aece5c45"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "a75cd23590bf3bb096a62046b47589e1b03879cc7f98c354b469704083b89a71"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6792f620f4a932cbbb518201e715cf09e9f90208a651e317aad521a6b8cd2a9f"
   end
 
   depends_on "astyle"
