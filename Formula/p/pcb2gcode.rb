@@ -7,12 +7,12 @@ class Pcb2gcode < Formula
   head "https://github.com/pcb2gcode/pcb2gcode.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "09418fbb8655886d52a1150f0d33d1c73c3ab7e4bb95b8ae708cf420fb17cc1b"
-    sha256 cellar: :any,                 arm64_sequoia: "d24764d5577c95188e266dc534fd622936aae7836c9da34b415b95d2f6e4f229"
-    sha256 cellar: :any,                 arm64_sonoma:  "f052802b280466e8d93afe75a1424ee95b3d1dc8cb74946d314ce5b5956ab4d2"
-    sha256 cellar: :any,                 sonoma:        "e32f2ac93824f32ce8fa039f62558ec45a8368e384d73a9dd39ca59f370632ae"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "bc5b89e0fa97b5258a00e06dc216997b7e367c91850d0ffefa3666b3541f6100"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "69b7470df5a463a3dc9ca4ac3cbf518d4e859ecbd227749ba4ea553d130390e2"
+    sha256 cellar: :any,                 arm64_tahoe:   "990a792299f6f9a12b0deb43946c4193d190d650e8dc1a1a7939b678f7327dc5"
+    sha256 cellar: :any,                 arm64_sequoia: "7f2572e39f620b06a4751b2647592b01b40be76d23f5f692674ef425ee92b0af"
+    sha256 cellar: :any,                 arm64_sonoma:  "6c4596fa51634c38bb01bc05bee81b21c1664319ed5c79be40f093164218cb84"
+    sha256 cellar: :any,                 sonoma:        "80e497e76fcc0a13d88616800e88089a681a9156880831e18dc4ef7beda230dc"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "9fe73727cf8d7cc79bd87e49006849fa4d56eae0cde7a9ed1d125bb07ab149df"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dd83143ad596c0fbbabd59fe144107d5359eab7e5c756e6eae1401d9e511d072"
   end
 
   depends_on "autoconf" => :build
