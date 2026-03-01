@@ -7,13 +7,12 @@ class ClaudeSquad < Formula
   head "https://github.com/smtg-ai/claude-squad.git", branch: "main"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "8f606b288872a5a8f339b9b8ef1115ba7c31c65ad6bef10dab79064c491008d2"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8f606b288872a5a8f339b9b8ef1115ba7c31c65ad6bef10dab79064c491008d2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8f606b288872a5a8f339b9b8ef1115ba7c31c65ad6bef10dab79064c491008d2"
-    sha256 cellar: :any_skip_relocation, sonoma:        "4125914a8f0352ed054fbd8f71571441254b425312bd7ef099205686936e7d1a"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f5ddb361d0f9cb157da039b658ec4cab15750ce3a5a18b1b3d60a95e4c9fc0d2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a07e72ba58d582321b8a502e817df5bf0b0a39faae4b316972163445b0ba82d8"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "6f8dea5a8a5d1e8fa2f5a2bafcfb27658ec0b187d18b883944df58c7196616cc"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6f8dea5a8a5d1e8fa2f5a2bafcfb27658ec0b187d18b883944df58c7196616cc"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6f8dea5a8a5d1e8fa2f5a2bafcfb27658ec0b187d18b883944df58c7196616cc"
+    sha256 cellar: :any_skip_relocation, sonoma:        "99cea34f7480a8d988dbb87a99a33329ecbe9d835a14a13137452811cbdcde11"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "5bae22a832ac00ac9c616542373480466beb3e2865e20f38e607667d5ceb2997"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ae3ce6ced6f4f08bd0a686947683683468c7e388c6ae19fcb0d4ba7e5628794d"
   end
 
   depends_on "go" => :build
