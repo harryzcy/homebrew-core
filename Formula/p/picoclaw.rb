@@ -7,12 +7,12 @@ class Picoclaw < Formula
   head "https://github.com/sipeed/picoclaw.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "4c524b0aa33362eec4bf9146bbaf872a24d37ad9c00eb419c83842bbc2bb2e4a"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4c524b0aa33362eec4bf9146bbaf872a24d37ad9c00eb419c83842bbc2bb2e4a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "4c524b0aa33362eec4bf9146bbaf872a24d37ad9c00eb419c83842bbc2bb2e4a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "6e27dff121e0b521d26dc1112f42866a51762ecb19ca3bbe94ffd29662a8923d"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "bf77007f8636729dcde749be51c1221c9d3fd1ddc28d4360c9ee6a6289e7d5b9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4cf1686cbee5d619b0225a0c20b72e7c158fa8f5ddaf0864f73ea37dbcd7a4ea"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "2e0f8541d7bdc46d3f3f7244fa36295ed78aebef02210b5b2206e985983374c7"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "2e0f8541d7bdc46d3f3f7244fa36295ed78aebef02210b5b2206e985983374c7"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2e0f8541d7bdc46d3f3f7244fa36295ed78aebef02210b5b2206e985983374c7"
+    sha256 cellar: :any_skip_relocation, sonoma:        "9ebd4995171dc3aa2f33a2568242e18b32e7d537903a563e9d2b511ff94bc978"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "e8ae0cf1a1241cab91de0ef82258f6583a984a6afccee6d1cf35082620366d46"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b556d708fc7b278f5e2943c73101ff3b5a0d9509725ef2c20ccd388f3a1866f7"
   end
 
   depends_on "go" => :build
