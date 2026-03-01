@@ -49,6 +49,16 @@ class Creduce < Formula
       url "https://github.com/csmith-project/creduce/commit/98baa64699aedb943520f175a5e731582df2806f.patch?full_index=1"
       sha256 "7a5a04ed394de464c09174997020a6cca0cc05154f58a3e855f20c8423fc8865"
     end
+
+    # More backports needed for updating LLVM
+    patch do
+      url "https://github.com/csmith-project/creduce/commit/4371cc2d77c771b8b88ded79b95176bac8dfbf09.patch?full_index=1"
+      sha256 "f7e88a13deb1db21933d0a81dfe328982beed283d49a66a59e6ef9c2220b1144"
+    end
+    patch do
+      url "https://github.com/csmith-project/creduce/commit/dff59dae1fc2d62cc1cd240761492587bab364be.patch?full_index=1"
+      sha256 "e4c531c73a8cd26cbf9175fa6f094f46a12cda00e5de3ac40e5c13aaf22c0b77"
+    end
   end
 
   livecheck do
@@ -68,7 +78,7 @@ class Creduce < Formula
   end
 
   depends_on "astyle"
-  depends_on "llvm@18" # LLVM 19 issue: https://github.com/csmith-project/creduce/issues/276
+  depends_on "llvm@20"
 
   uses_from_macos "flex" => :build
   uses_from_macos "perl"
@@ -100,6 +110,20 @@ class Creduce < Formula
     end
   end
 
+  # Apply open PR to support LLVM 19
+  # PR ref: https://github.com/csmith-project/creduce/pull/285
+  patch do
+    url "https://github.com/csmith-project/creduce/commit/30d433e5e49c6b5864e5ca7d8aa7cf30cf3191e2.patch?full_index=1"
+    sha256 "f0de5d3cf8a17405f4fce908a498feed3aa0d8594092bb3096624dba1ca5b74f"
+  end
+
+  # Apply open PR to support LLVM 20
+  # PR ref: https://github.com/csmith-project/creduce/pull/287
+  patch do
+    url "https://github.com/csmith-project/creduce/commit/62bd78d6d621faca246a1b2b659b75bf721aa184.patch?full_index=1"
+    sha256 "fe476690a81b3a6d9cda06058515fc49a250f1a0b6d9ecf30a9a9dc68ab7987d"
+  end
+
   def install
     ENV.prepend_create_path "PERL5LIB", libexec/"lib/perl5"
 
@@ -124,9 +148,9 @@ class Creduce < Formula
       ENV["CXX"] = llvm.opt_bin/"clang++"
     end
 
-    system "./configure", *std_configure_args,
-                          "--disable-silent-rules",
-                          "--bindir=#{libexec}"
+    system "./configure", "--disable-silent-rules",
+                          "--bindir=#{libexec}",
+                          *std_configure_args
     system "make"
     system "make", "install"
 
