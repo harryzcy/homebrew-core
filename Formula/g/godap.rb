@@ -1,8 +1,8 @@
 class Godap < Formula
   desc "Complete TUI (terminal user interface) for LDAP"
   homepage "https://github.com/Macmod/godap"
-  url "https://github.com/Macmod/godap/archive/refs/tags/v2.10.7.tar.gz"
-  sha256 "5ca0c9b0220f9b30f42ffeddeee9fdf5e63feda55d3ed9d3f6dfdfd30da15f6d"
+  url "https://github.com/Macmod/godap/archive/refs/tags/v2.10.8.tar.gz"
+  sha256 "443cdd98012243ae25f54ffb9947aa2d5479d17b2a2b95e7b97aca07785590ea"
   license "MIT"
   head "https://github.com/Macmod/godap.git", branch: "main"
 
