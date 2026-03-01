@@ -4,6 +4,7 @@ class Gastown < Formula
   url "https://github.com/steveyegge/gastown/archive/refs/tags/v0.9.0.tar.gz"
   sha256 "7e542737f784ac1247cb62eb828bc4267c5d5cab547696253623d4a717c57d3e"
   license "MIT"
+  revision 1
   head "https://github.com/steveyegge/gastown.git", branch: "main"
 
   bottle do
@@ -37,6 +38,9 @@ class Gastown < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/gt version")
+
+    system "dolt", "config", "--global", "--add", "user.name", "BrewTestBot"
+    system "dolt", "config", "--global", "--add", "user.email", "BrewTestBot@test.com"
 
     system bin/"gt", "install"
     assert_path_exists testpath/"mayor"
