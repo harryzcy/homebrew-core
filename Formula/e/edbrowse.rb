@@ -7,12 +7,12 @@ class Edbrowse < Formula
   head "https://github.com/edbrowse/edbrowse.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "1f283ccbdfc824f65026829fafcdea0489ba67d1bd814e1efa63188028469e62"
-    sha256 cellar: :any,                 arm64_sequoia: "3bab6f02f68660fbc7ef7d8d10bc5beab31c9037a8e4e93338794ffc4eb3e450"
-    sha256 cellar: :any,                 arm64_sonoma:  "f3d60bbe8c842555381664a2a4341a1b47a1f970e0b61fa2cc2932d99a2d3ba7"
-    sha256 cellar: :any,                 sonoma:        "66d4cbf1ebe89017c5e6d34f43e2ed762f44f9fa09ac37873027cd745bc401a3"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "93d8f4080bf66e3e9d517fde6abece60a888c39bd01c341b3da18c55ba171695"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e312149ee61414e925b221f95fdfab83758c6d6ddcedb404bf0713b5f1320fae"
+    sha256 cellar: :any,                 arm64_tahoe:   "8d82e9caa53a4306edf1ed0e546117cf2179fdfa681502ae2b2a32f0e3307cd9"
+    sha256 cellar: :any,                 arm64_sequoia: "09f7024c882858624755ed25225a0325a4c3aea8026fc473031830c10d759c41"
+    sha256 cellar: :any,                 arm64_sonoma:  "5abb19a1db5e992ffb4ade30a1c0dd6e0badf248c8df67ff345a3566c2a68226"
+    sha256 cellar: :any,                 sonoma:        "fa1a0e8cf537963ab2d68728962453403b50f762be723cdf2320d90340cd8255"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "d2875b7495df6a8bdc65c7fec1c1f1788be6b5aa04583703f62358d421dbc8da"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "58489129de776b9a31a00852fa8e939e29685c2ae857cea281d8c7329044a380"
   end
 
   depends_on "pkgconf" => :build
