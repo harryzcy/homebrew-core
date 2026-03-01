@@ -1,8 +1,8 @@
 class Asciinema < Formula
   desc "Record and share terminal sessions"
   homepage "https://asciinema.org"
-  url "https://github.com/asciinema/asciinema/archive/refs/tags/v3.1.0.tar.gz"
-  sha256 "d07d22d9531fa98d2999dfc2ef27651efc3a4f5e5f46a78c3c306b69c466af8b"
+  url "https://github.com/asciinema/asciinema/archive/refs/tags/v3.2.0.tar.gz"
+  sha256 "247c7c87481f38d7788c1fb1be12021c778676c0d0ab37e529ec528f87f487ce"
   license "GPL-3.0-only"
   head "https://github.com/asciinema/asciinema.git", branch: "develop"
 
