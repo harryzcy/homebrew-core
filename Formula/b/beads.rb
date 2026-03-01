@@ -1,9 +1,10 @@
 class Beads < Formula
   desc "Memory upgrade for your coding agent"
   homepage "https://github.com/steveyegge/beads"
-  url "https://github.com/steveyegge/beads/archive/refs/tags/v0.55.4.tar.gz"
-  sha256 "aef59d95f42dd9f13712411faffc02840871e43060fababc80d7f70b06b4d2c4"
+  url "https://github.com/steveyegge/beads/archive/refs/tags/v0.57.0.tar.gz"
+  sha256 "4f2c3ea960fbc2d8f5a4cb97cd0191c1f0afb66bcfad725a998089ff0c30dd21"
   license "MIT"
+  compatibility_version 1
 
   bottle do
     sha256 cellar: :any,                 arm64_tahoe:   "f3482a9aaa978f62f8db069c23f5517a273f06676bd3ddee0fb819531c24d2d1"
@@ -15,6 +16,7 @@ class Beads < Formula
   end
 
   depends_on "go" => :build
+  depends_on "dolt"
   depends_on "icu4c@78"
 
   def install
