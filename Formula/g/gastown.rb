@@ -1,18 +1,18 @@
 class Gastown < Formula
   desc "Multi-agent workspace manager"
   homepage "https://github.com/steveyegge/gastown"
-  url "https://github.com/steveyegge/gastown/archive/refs/tags/v0.8.0.tar.gz"
-  sha256 "821026116293fdf27ec33c89995672ba3473115d3111773d6be780f49e42b5a2"
+  url "https://github.com/steveyegge/gastown/archive/refs/tags/v0.9.0.tar.gz"
+  sha256 "7e542737f784ac1247cb62eb828bc4267c5d5cab547696253623d4a717c57d3e"
   license "MIT"
   head "https://github.com/steveyegge/gastown.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "44d7086735b1b1ea600e897eef3a86f04a5fd800fb4e7073a98e72a3a09c5da8"
-    sha256 cellar: :any,                 arm64_sequoia: "b3bcf415c80a39d14c53233f5d431c7c90522df8117e1025b6983adc1200d5d8"
-    sha256 cellar: :any,                 arm64_sonoma:  "517391d9603643d2fb0529d28e8db532ef5e62a9f64bd457de200830c3a0dc50"
-    sha256 cellar: :any,                 sonoma:        "e3968e7a408d03b7d45a1cd191e287529b0cbdadd7329e73641d0789aae6d082"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "c0c258e7e10ca2de04751a5cb3dfb97e89c0d15846d06b3b9d1bfc4130e45b4b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "14cf5cafe62fb192425d52fb0635b0f803df16d62d8ef747fff715d9f55f1b13"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "cae63c74704cb6d314ab8a3b97a3a64aefae0b7e1e8ab1146cdc96371b1213de"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cae63c74704cb6d314ab8a3b97a3a64aefae0b7e1e8ab1146cdc96371b1213de"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "cae63c74704cb6d314ab8a3b97a3a64aefae0b7e1e8ab1146cdc96371b1213de"
+    sha256 cellar: :any_skip_relocation, sonoma:        "f8c8b7f99ffc951ec79f5ae89566db21d5bce236c8cf02277703a0a9ff6aeef7"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "2983ee55f362df98032ad4b23be29cdfcfa2638ec26eb228012438abf3f26d3c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "75346b546ee9943d155c61df1aa29de626278d30a7b4bdd1ce283ad808e9e383"
   end
 
   depends_on "go" => :build
