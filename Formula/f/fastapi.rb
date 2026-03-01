@@ -3,8 +3,8 @@ class Fastapi < Formula
 
   desc "CLI for FastAPI framework"
   homepage "https://fastapi.tiangolo.com/"
-  url "https://files.pythonhosted.org/packages/a2/b5/386a9579a299a32365b34097e4eac6a0544ce0d7aa4bb95ce0d71607a999/fastapi-0.135.0.tar.gz"
-  sha256 "bd37903acf014d1284bda027096e460814dca9699f9dacfe11c275749d949f4d"
+  url "https://files.pythonhosted.org/packages/e7/7b/f8e0211e9380f7195ba3f3d40c292594fd81ba8ec4629e3854c353aaca45/fastapi-0.135.1.tar.gz"
+  sha256 "d04115b508d936d254cea545b7312ecaa58a7b3a0f84952535b4c9afae7668cd"
   license "MIT"
 
   bottle do
@@ -126,8 +126,8 @@ class Fastapi < Formula
   end
 
   resource "python-dotenv" do
-    url "https://files.pythonhosted.org/packages/f0/26/19cadc79a718c5edbec86fd4919a6b6d3f681039a2f6d66d14be94e75fb9/python_dotenv-1.2.1.tar.gz"
-    sha256 "42667e897e16ab0d66954af0e60a9caa94f0fd4ecf3aaf6d2d260eec1aa36ad6"
+    url "https://files.pythonhosted.org/packages/82/ed/0301aeeac3e5353ef3d94b6ec08bbcabd04a72018415dcb29e588514bba8/python_dotenv-1.2.2.tar.gz"
+    sha256 "2c371a91fbd7ba082c2c1dc1f8bf89ca22564a087c2c287cd9b662adde799cf3"
   end
 
   resource "python-multipart" do
