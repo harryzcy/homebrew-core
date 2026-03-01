@@ -1,10 +1,9 @@
 class Envio < Formula
   desc "Modern And Secure CLI Tool For Managing Environment Variables"
   homepage "https://github.com/envio-cli/envio"
-  url "https://github.com/envio-cli/envio/archive/refs/tags/v0.6.1.tar.gz"
-  sha256 "24cd7c485226be7f7921a95ae4edaf3cb510c90a339c51e51423c3eb4deee6dc"
+  url "https://github.com/envio-cli/envio/archive/refs/tags/v0.7.0.tar.gz"
+  sha256 "729a02ac8a5e129fa5129de6ee62f7e2c408502dafc25924d65d02558caa5a08"
   license any_of: ["Apache-2.0", "MIT"]
-  revision 1
   head "https://github.com/envio-cli/envio.git", branch: "main"
 
   bottle do
@@ -23,6 +22,10 @@ class Envio < Formula
   depends_on "gpgme"
   depends_on "libgpg-error"
 
+  on_linux do
+    depends_on "dbus"
+  end
+
   def install
     system "cargo", "install", *std_cargo_args
   end
@@ -30,6 +33,7 @@ class Envio < Formula
   test do
     # Setup envio config path
     mkdir testpath/".envio"
+    mkdir testpath/".envio/profiles"
     touch testpath/".envio/setenv.sh"
 
     (testpath/"batch.gpg").write <<~EOS
@@ -45,14 +49,21 @@ class Envio < Formula
     EOS
 
     system Formula["gnupg"].opt_bin/"gpg", "--batch", "--gen-key", "batch.gpg"
+    gpg = Formula["gnupg"].opt_bin/"gpg"
+    fingerprint_output = shell_output("#{gpg} --with-colons --list-secret-keys --fingerprint")
+    fingerprint_line = fingerprint_output.lines.find { |line| line.start_with?("fpr:") }.to_s
+    fingerprint = fingerprint_line.split(":").fetch(9, "").strip
+    assert_match(/\A\h{40}\z/, fingerprint)
 
     begin
-      output = shell_output("#{bin}/envio create brewtest -g #{testpath}/.gnupg/trustdb.gpg", 1)
-      assert_match "Profiles directory does not exist creating it now..", output
-      assert_path_exists testpath/".envio/profiles/brewtest.env"
+      with_env(ENVIO_KEY: fingerprint) do
+        output = shell_output("#{bin}/envio create brewtest --cipher-kind gpg")
+        assert_match "Profile created", output
+      end
+      assert_path_exists testpath/".envio/profiles/brewtest.envio"
 
       output = shell_output("#{bin}/envio list")
-      assert_empty output
+      assert_match "brewtest", output
 
       assert_match version.to_s, shell_output("#{bin}/envio version")
     ensure
