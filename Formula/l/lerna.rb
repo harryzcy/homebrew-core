@@ -1,8 +1,8 @@
 class Lerna < Formula
   desc "Tool for managing JavaScript projects with multiple packages"
   homepage "https://lerna.js.org"
-  url "https://registry.npmjs.org/lerna/-/lerna-9.0.4.tgz"
-  sha256 "efcae3f5b765eb8444dfb65bd4573262ce080fd35bb95999b6d072cf76912fcb"
+  url "https://registry.npmjs.org/lerna/-/lerna-9.0.5.tgz"
+  sha256 "7a58e71b192c17ef0ef7281e6f2ee7f0c640ce1dfb2a623eb8fddd312ea547df"
   license "MIT"
 
   bottle do
