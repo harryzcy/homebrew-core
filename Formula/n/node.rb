@@ -12,12 +12,12 @@ class Node < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "8dd0721383bc4c47974a467a01de3a765e7a056f1a98a628eaef12106cc49145"
-    sha256 cellar: :any,                 arm64_sequoia: "a90a3fc67ceb040f8800fe77e635d3d80e3b1a79114a2d5fe908bc6d17d18bc5"
-    sha256 cellar: :any,                 arm64_sonoma:  "f0e701d78305425dd403d3398d90c946d206ec96204a6d2f8529aae5440c5293"
-    sha256 cellar: :any,                 sonoma:        "d242e62d0eb34eefaae72e478ee521942d87956776850f16d2b6b985901697e4"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "f36cd4baf6b28161d90686be9ad26c9a886af2d00f8211454867bf1972ffe39f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "943728c4b3a94bf318cdd5d241c4afffb3a34865d4434f335b2e4cbbe150fd48"
+    sha256 cellar: :any,                 arm64_tahoe:   "93b38fbce58bbf54da15c39d5bf66fca031fc7c8cfb5e2463373fde1c007de09"
+    sha256 cellar: :any,                 arm64_sequoia: "ba552f96c8e262392a7e810c4effa194934ad0ae95a5d52a36166748b84cd8d9"
+    sha256 cellar: :any,                 arm64_sonoma:  "c98c7595eb6d64a6fa53f34ba9375b638022b432f83ef9ebff8fbc98471b2f4e"
+    sha256 cellar: :any,                 sonoma:        "673d74fb8e8fcf5dc373c9bb907891fd5fe52a6516a17b113937991830881d29"
+    sha256 cellar: :any_skip_relocation, arm64_linux:   "9eec52a4a5f7b25eab340a17da98ac5343fbcf694da0d5ee23ab829877563a2a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b5277302ecfb80a9ca1a29f10d0818b271ee1d0272e2f9d6760ca8328060b5d0"
   end
 
   depends_on "pkgconf" => :build
